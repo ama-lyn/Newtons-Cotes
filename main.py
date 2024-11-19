@@ -36,8 +36,21 @@ def newton_cotes_h2(f, a, b):
     # Midpoint for Simpson's Rule
     m = (a + b) / 2
     
-    # Calculate the integral using the Newton-Cotes (Simpson's Rule)
+    # Calculate the integral using the Newton-Cotes
     integral = (h_value / 2) * (f.subs(x, a) + f.subs(x, b) + 2 * f.subs(x, m))
     
     return integral, h_value
 
+if __name__ == "__main__":
+    # Define a sample function
+    x = sp.symbols('x')
+    sample_function = x**2  # f(x) = x^2
+
+    # Integration limits
+    lower_limit = 0
+    upper_limit = 2
+
+    # Compute the integral and step size
+    result, step_size = newton_cotes_h2(sample_function, lower_limit, upper_limit)
+    print(f"The integral of f(x) from {lower_limit} to {upper_limit} is approximately {result:.4f}")
+    
